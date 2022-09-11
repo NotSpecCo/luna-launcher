@@ -1,13 +1,13 @@
 <script lang="ts">
   import { OnyxKeys } from 'onyx-keys';
 
-  import ListItem from 'onyx-ui/components/list/ListItem.svelte';
   import NavItem from 'onyx-ui/components/nav/NavItem.svelte';
   import Typography from 'onyx-ui/components/Typography.svelte';
   import View from 'onyx-ui/components/view/View.svelte';
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
   import ViewHeader from 'onyx-ui/components/view/ViewHeader.svelte';
   import { onDestroy } from 'svelte';
+  import AppListItem from '../components/AppListItem.svelte';
   import Statusbar from '../components/Statusbar.svelte';
   import type { App } from '../entities/App';
   import { apps } from '../stores/apps';
@@ -98,15 +98,7 @@
     {/if}
     {#if $settings.appListDisplay === 'list'}
       {#each results as app}
-        <ListItem
-          imageUrl={app.getIconUrl('smallest')}
-          primaryText={app.name}
-          navi={{
-            itemId: app.origin,
-            onSelect: () => app.launch(),
-            onFocus: () => (focusedApp = app),
-          }}
-        />
+        <AppListItem {app} />
       {/each}
     {:else}
       <div class="grid">

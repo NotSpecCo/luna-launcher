@@ -18,7 +18,7 @@ function createStore() {
       origins.push(origin);
     }
     if (!fav) {
-      origins = origins.filter((a) => a !== this.origin);
+      origins = origins.filter((a) => a !== origin);
     }
 
     Storage.setItem('favoriteApps', origins);
