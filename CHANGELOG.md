@@ -1,3 +1,13 @@
+# [1.2.0](https://github.com/garredow/luna-launcher/compare/v1.1.0...v1.2.0) (2022-09-11)
+
+
+### Features
+
+* add device settings mock page ([242516a](https://github.com/garredow/luna-launcher/commit/242516abbc7caf8088e3dda49284d9d1f31165f3))
+* **appmenu:** enable shortcut keys ([3cf5d12](https://github.com/garredow/luna-launcher/commit/3cf5d1209ac94b3bbd98df5f56eaf84cd258fece))
+* increase size of clock ([e9b3c27](https://github.com/garredow/luna-launcher/commit/e9b3c27163e8296404e0d8f13e47643c645877e0))
+* lay groundwork for widgets and custom pages ([6360796](https://github.com/garredow/luna-launcher/commit/63607961a497a359fe2e57ed5509d1c16f4b8fba))
+
 # [1.1.0](https://github.com/garredow/luna-launcher/compare/v1.0.0...v1.1.0) (2022-09-11)
 
 
