@@ -8,6 +8,7 @@
   import AppMenu from './components/AppMenu.svelte';
   import AppList from './routes/AppList.svelte';
   import AppSettings from './routes/AppSettings.svelte';
+  import DeviceSettings from './routes/DeviceSettings.svelte';
   import Home from './routes/Home.svelte';
   import Redirect from './routes/Redirect.svelte';
   import { apps } from './stores/apps';
@@ -21,6 +22,7 @@
     '/home': Home,
     '/apps': AppList,
     '/settings': AppSettings,
+    '/device': DeviceSettings,
     '*': Redirect,
   };
 

@@ -8,7 +8,8 @@
   const items = [
     { title: 'Home', route: '/home' },
     { title: 'Apps', route: '/apps' },
-    { title: 'Settings', route: '/settings' },
+    { title: 'Launcher', route: '/settings' },
+    { title: 'Device', route: '/device' },
   ];
 </script>
 

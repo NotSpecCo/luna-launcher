@@ -24,7 +24,9 @@
     "telephony": {},
     "settings": {
       "access": "readwrite"
-    }
+    },
+    "wifi-manage": {},
+    "bluetooth": {}
   },
   "chrome": {
     "statusbar": "overlap"
