@@ -50,7 +50,7 @@
     "object.getownpropertydescriptors": "^2.1.4",
     "onyx-keys": "^1.1.3",
     "onyx-navigation": "^1.4.1",
-    "onyx-ui": "^1.1.0",
+    "onyx-ui": "^1.2.0",
     "sirv-cli": "^1.0.0",
     "svelte-icons": "^2.1.0",
     "svelte-spa-router": "^3.3.0",
