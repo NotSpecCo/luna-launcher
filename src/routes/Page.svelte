@@ -5,22 +5,22 @@
   import { onDestroy } from 'svelte';
   import { replace } from 'svelte-spa-router';
   import ClockWidget from '../components/ClockWidget.svelte';
-  import FavAppsWidget from '../components/FavAppsWidget.svelte';
-  import FlexWidget from '../components/FlexWidget.svelte';
   import Statusbar from '../components/Statusbar.svelte';
+
+  export let params: { pageId: string };
 
   let editing = false;
 
   const keys = OnyxKeys.subscribe({
     onArrowLeftLong: async (ev) => {
-      replace('/page/left');
+      params.pageId === 'right' && replace('/home');
     },
     onArrowRightLong: async (ev) => {
-      replace('/page/right');
+      params.pageId === 'left' && replace('/home');
     },
-    // onSoftRightLong: async (ev) => {
-    //   editing = !editing;
-    // },
+    onSoftRightLong: async (ev) => {
+      editing = !editing;
+    },
   });
 
   onDestroy(() => keys.unsubscribe());
@@ -30,8 +30,6 @@
   <Statusbar />
   <ViewContent>
     <ClockWidget {editing} />
-    <FlexWidget {editing} />
-    <FavAppsWidget {editing} />
   </ViewContent>
 </View>
 

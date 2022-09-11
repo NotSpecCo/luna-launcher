@@ -35,7 +35,7 @@ export const themes: ThemeConfig[] = [
       textColorS: 0,
       textColorL: 100,
 
-      focusColorA: 20,
+      focusColorA: 30,
       dividerColorA: 10,
     },
   },
