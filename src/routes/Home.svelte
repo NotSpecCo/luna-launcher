@@ -25,13 +25,11 @@
       <div class="date">{now.toLocaleDateString()}</div>
     </div>
     <div class="flex" />
-    {#if favApps.length > 0}
-      <div class="apps">
-        {#each favApps as app}
-          <AppGridItem {app} />
-        {/each}
-      </div>
-    {/if}
+    <div class="apps">
+      {#each favApps as app}
+        <AppGridItem {app} />
+      {/each}
+    </div>
   </ViewContent>
 </View>
 

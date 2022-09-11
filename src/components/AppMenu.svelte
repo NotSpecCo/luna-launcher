@@ -1,6 +1,7 @@
 <script lang="ts">
   import ListItem from 'onyx-ui/components/list/ListItem.svelte';
   import NavGroup from 'onyx-ui/components/nav/NavGroup.svelte';
+  import { getShortcutFromIndex } from 'onyx-ui/utils';
   import { push } from 'svelte-spa-router';
   import Statusbar from './Statusbar.svelte';
 
@@ -13,11 +14,12 @@
 
 <NavGroup groupId="app-menu">
   <Statusbar />
-  {#each items as item}
+  {#each items as item, i}
     <ListItem
       primaryText={item.title}
       navi={{
         itemId: item.route,
+        shortcutKey: getShortcutFromIndex(i),
         onSelect: () => push(item.route),
       }}
     />
