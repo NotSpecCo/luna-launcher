@@ -1,0 +1,38 @@
+{
+  "id": "dev.nothing.luna-launcher",
+  "name": "Luna Launcher",
+  "description": "A launcher for KaiOS",
+  "version": "1.0.0",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/images/icon_128.png",
+    "112": "/images/icon_112.png",
+    "56": "/images/icon_56.png"
+  },
+  "theme_color": "#1DA1F2",
+  "developer": {
+    "name": "Garrett Downs",
+    "url": "https://nothing.dev"
+  },
+  "type": "certified",
+  "permissions": {
+    "webapps-manage": {},
+    "sms": {},
+    "mobileconnection": {},
+    "networkstats-manage": {},
+    "alarms": {},
+    "telephony": {},
+    "settings": { "access": "readwrite" }
+  },
+  "chrome": {
+    "statusbar": "overlap"
+  },
+  "role": "homescreen",
+  "locales": {
+    "en-US": {
+      "name": "luna-launcher",
+      "description": "A launcher for KaiOS"
+    }
+  },
+  "default_locale": "en-US"
+}
