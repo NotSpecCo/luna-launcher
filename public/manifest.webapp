@@ -22,7 +22,9 @@
     "networkstats-manage": {},
     "alarms": {},
     "telephony": {},
-    "settings": { "access": "readwrite" }
+    "settings": {
+      "access": "readwrite"
+    }
   },
   "chrome": {
     "statusbar": "overlap"
