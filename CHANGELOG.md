@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/garredow/luna-launcher/compare/v1.2.0...v1.3.0) (2022-09-12)
+
+
+### Features
+
+* transition to using widgets for home screens ([6f31986](https://github.com/garredow/luna-launcher/commit/6f3198689f67821209ba8afa98ce2930d284bff2))
+
 # [1.2.0](https://github.com/garredow/luna-launcher/compare/v1.1.0...v1.2.0) (2022-09-11)
 
 
