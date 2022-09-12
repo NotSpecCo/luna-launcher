@@ -4,6 +4,7 @@
   import type { App } from '../entities';
 
   export let app: App;
+  export let size: number = 42;
 </script>
 
 <NavItem
@@ -33,12 +34,10 @@
     ],
   }}
 >
-  <img class="icon" src={app.getIconUrl('largest')} alt="" />
+  <img
+    class="icon"
+    style={`height: ${size}px; width: ${size}px;`}
+    src={app.getIconUrl('largest')}
+    alt=""
+  />
 </NavItem>
-
-<style>
-  .icon {
-    height: 42px;
-    width: 42px;
-  }
-</style>

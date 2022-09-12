@@ -9,7 +9,6 @@
   import AppList from './routes/AppList.svelte';
   import AppSettings from './routes/AppSettings.svelte';
   import DeviceSettings from './routes/DeviceSettings.svelte';
-  import Home from './routes/Home.svelte';
   import Page from './routes/Page.svelte';
   import Redirect from './routes/Redirect.svelte';
   import { apps } from './stores/apps';
@@ -20,7 +19,6 @@
   OnyxNavigation.startListening();
 
   const routes = {
-    '/home': Home,
     '/page/:pageId': Page,
     '/apps': AppList,
     '/settings': AppSettings,

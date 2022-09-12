@@ -19,7 +19,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid var(--accent-color);
+    border: 1px solid var(--accent-color);
     background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
   }
 </style>

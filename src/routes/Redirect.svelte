@@ -4,7 +4,6 @@
   import { replace } from 'svelte-spa-router';
 
   onMount(() => {
-    replace(`/home`);
-    // replace(`/page/${$pages[0].id}`);
+    replace(`/page/center`);
   });
 </script>
