@@ -6,6 +6,7 @@
   import { onDestroy, onMount } from 'svelte';
   import Router, { pop } from 'svelte-spa-router';
   import AppMenu from './components/AppMenu.svelte';
+  import AddWidget from './routes/AddWidget.svelte';
   import AppList from './routes/AppList.svelte';
   import AppSettings from './routes/AppSettings.svelte';
   import DeviceSettings from './routes/DeviceSettings.svelte';
@@ -20,6 +21,7 @@
 
   const routes = {
     '/page/:pageId': Page,
+    '/page/:pageId/add': AddWidget,
     '/apps': AppList,
     '/settings': AppSettings,
     '/device': DeviceSettings,
