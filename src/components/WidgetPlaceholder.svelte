@@ -1,14 +1,37 @@
 <script lang="ts">
   import NavItem from 'onyx-ui/components/nav/NavItem.svelte';
   import Typography from 'onyx-ui/components/Typography.svelte';
+  import { Onyx } from 'onyx-ui/services';
 
   export let id: string;
   export let name: string;
   export let height: number;
+  export let display: 'inline-block' | 'block' = 'block';
+  export let onRemove: () => void;
+
+  let style = `height: ${height}px;`;
+  if (display === 'inline-block') {
+    style += `width: ${height}px;`;
+  }
 </script>
 
-<NavItem navi={{ itemId: id }}>
-  <div class="root" style={`height: ${height}px;`}>
+<NavItem
+  navi={{ itemId: id }}
+  {display}
+  contextMenu={{
+    title: name,
+    items: [
+      {
+        label: 'Remove',
+        onSelect: () => {
+          onRemove();
+          Onyx.contextMenu.close();
+        },
+      },
+    ],
+  }}
+>
+  <div class="root" {style}>
     <Typography>{name}</Typography>
   </div>
 </NavItem>
@@ -21,6 +44,7 @@
     align-items: center;
     border: 1px solid var(--accent-color);
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
+    margin: 5px;
+    overflow: hidden;
   }
 </style>

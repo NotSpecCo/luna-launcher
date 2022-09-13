@@ -1,9 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { Widget } from '../models';
+  import WidgetPlaceholder from './WidgetPlaceholder.svelte';
 
   export let widget: Widget<any>;
   export let editing = false;
+  export let onRemove: () => void;
 
   let now = new Date();
 
@@ -15,10 +17,7 @@
 </script>
 
 {#if editing}
-  <div class="root editing">
-    <div class="time">{now.toLocaleTimeString()}</div>
-    <div class="date">{now.toLocaleDateString()}</div>
-  </div>
+  <WidgetPlaceholder id={widget.id} name={widget.name} height={36} {onRemove} />
 {:else}
   <div class="root">
     <div class="time">{now.toLocaleTimeString()}</div>
@@ -29,11 +28,6 @@
 <style>
   .root {
     text-align: center;
-  }
-  .root.editing {
-    border: 1px solid var(--accent-color);
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
   }
 
   .time {
