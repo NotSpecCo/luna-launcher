@@ -9,7 +9,6 @@ const defaultPages: Page[] = [
     id: 'left',
     widgets: [
       { id: generateId(), type: 'clock', name: 'Clock', data: {} },
-      { id: generateId(), type: 'spacer', name: 'Spacer', data: { height: 10 } },
       // { id: generateId(), type: 'wifi', name: 'Wi-Fi', data: {} },
       // { id: generateId(), type: 'cellData', name: 'Cellular Data', data: {} },
       // { id: generateId(), type: 'bluetooth', name: 'Bluetooth', data: {} },
@@ -33,7 +32,6 @@ const defaultPages: Page[] = [
     widgets: [
       { id: generateId(), type: 'clock', name: 'Clock', data: {} },
       { id: generateId(), type: 'spacer', name: 'Spacer', data: { height: 200 } },
-      { id: generateId(), type: 'favApps', name: 'Favorite Apps', data: {} },
     ],
   },
   { id: 'right', widgets: [{ id: generateId(), type: 'clock', name: 'Clock', data: {} }] },
