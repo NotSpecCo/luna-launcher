@@ -5,11 +5,10 @@
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
   import MdAccessTime from 'svelte-icons/md/MdAccessTime.svelte';
   import MdAirplanemodeActive from 'svelte-icons/md/MdAirplanemodeActive.svelte';
+  import MdAllOut from 'svelte-icons/md/MdAllOut.svelte';
   import MdBluetooth from 'svelte-icons/md/MdBluetooth.svelte';
-  import MdFavorite from 'svelte-icons/md/MdFavorite.svelte';
   import MdLocationOn from 'svelte-icons/md/MdLocationOn.svelte';
   import MdNetworkCell from 'svelte-icons/md/MdNetworkCell.svelte';
-  import MdSwapVert from 'svelte-icons/md/MdSwapVert.svelte';
   import MdWifi from 'svelte-icons/md/MdWifi.svelte';
   import MdWifiTethering from 'svelte-icons/md/MdWifiTethering.svelte';
   import { pop } from 'svelte-spa-router';
@@ -22,8 +21,8 @@
 
   export let params: { pageId: 'left' | 'center' | 'right' };
 
-  function add(type: WidgetType) {
-    pages.addWidget(params.pageId, createWidget(type));
+  function add(type: WidgetType, data: any = {}) {
+    pages.addWidget(params.pageId, createWidget(type, data));
     pop();
   }
 
@@ -34,17 +33,11 @@
     pop();
   }
 
-  function createWidget(type: WidgetType): Widget<any> {
+  function createWidget(type: WidgetType, data: any = {}): Widget<any> {
     let name = 'Unknown';
     switch (type) {
       case 'clock':
         name = 'Clock';
-        break;
-      case 'spacer':
-        name = 'Spacer';
-        break;
-      case 'favApps':
-        name = 'Favorite Apps';
         break;
       case 'wifi':
         name = 'Wi-Fi';
@@ -73,7 +66,7 @@
       id: generateId(),
       name,
       type,
-      data: {},
+      data,
     };
   }
 </script>
@@ -90,16 +83,28 @@
       navi={{ itemId: 'clock', onSelect: () => add('clock') }}
     />
     <ListItem
-      icon={MdSwapVert}
-      primaryText="Spacer"
-      secondaryText="Empty space"
-      navi={{ itemId: 'spacer', onSelect: () => add('spacer') }}
+      icon={MdAllOut}
+      primaryText="1x1 Spacer"
+      secondaryText="Add some empty space"
+      navi={{ itemId: 'spacer1x1', onSelect: () => add('spacer', { height: 1, width: 1 }) }}
     />
     <ListItem
-      icon={MdFavorite}
-      primaryText="Favorite Apps"
-      secondaryText="Grid of favorited apps"
-      navi={{ itemId: 'favApps', onSelect: () => add('favApps') }}
+      icon={MdAllOut}
+      primaryText="1x4 Spacer"
+      secondaryText="Add some empty space"
+      navi={{ itemId: 'spacer1x4', onSelect: () => add('spacer', { height: 1, width: 4 }) }}
+    />
+    <ListItem
+      icon={MdAllOut}
+      primaryText="2x4 Spacer"
+      secondaryText="Add some empty space"
+      navi={{ itemId: 'spacer2x4', onSelect: () => add('spacer', { height: 2, width: 4 }) }}
+    />
+    <ListItem
+      icon={MdAllOut}
+      primaryText="4x4 Spacer"
+      secondaryText="Add some empty space"
+      navi={{ itemId: 'spacer4x4', onSelect: () => add('spacer', { height: 4, width: 4 }) }}
     />
     <ListHeader title="Settings" />
     <ListItem

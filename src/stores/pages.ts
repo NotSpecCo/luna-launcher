@@ -24,6 +24,14 @@ const defaultPages: Page[] = [
       // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '6' } },
       // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '7' } },
       // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '8' } },
+      // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '1' } },
+      // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '2' } },
+      // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '3' } },
+      // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '4' } },
+      // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '5' } },
+      // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '6' } },
+      // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '7' } },
+      // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '8' } },
       // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '9' } },
     ],
   },
@@ -31,10 +39,16 @@ const defaultPages: Page[] = [
     id: 'center',
     widgets: [
       { id: generateId(), type: 'clock', name: 'Clock', data: {} },
-      { id: generateId(), type: 'spacer', name: 'Spacer', data: { height: 200 } },
+      { id: generateId(), type: 'spacer', name: 'Spacer', data: { height: 4, width: 4 } },
     ],
   },
-  { id: 'right', widgets: [{ id: generateId(), type: 'clock', name: 'Clock', data: {} }] },
+  {
+    id: 'right',
+    widgets: [
+      { id: generateId(), type: 'clock', name: 'Clock', data: {} },
+      { id: generateId(), type: 'spacer', name: 'Spacer', data: { height: 4, width: 4 } },
+    ],
+  },
 ];
 
 function createStore() {

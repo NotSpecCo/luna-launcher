@@ -1,12 +1,14 @@
 <script lang="ts">
   import { OnyxKeys } from 'onyx-keys';
+  import Button from 'onyx-ui/components/buttons/Button.svelte';
   import View from 'onyx-ui/components/view/View.svelte';
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
   import { onDestroy } from 'svelte';
-  import { replace } from 'svelte-spa-router';
+  import { push, replace } from 'svelte-spa-router';
   import AppIconWidget from '../components/AppIconWidget.svelte';
   import ClockWidget from '../components/ClockWidget.svelte';
   import SettingsWidget from '../components/SettingsWidget.svelte';
+  import SpacerWidget from '../components/SpacerWidget.svelte';
   import Statusbar from '../components/Statusbar.svelte';
   import type { WidgetType } from '../models';
   import { pages } from '../stores/pages';
@@ -20,6 +22,8 @@
     switch (widgetType) {
       case 'clock':
         return ClockWidget;
+      case 'spacer':
+        return SpacerWidget;
       case 'appIcon':
         return AppIconWidget;
       case 'wifi':
@@ -76,10 +80,10 @@
         onMove={(dir) => pages.moveWidget(page.id, widget.id, dir)}
       />
     {/each}
-    <!-- <Button
+    <Button
       title="Add Widget"
       navi={{ itemId: 'btnAdd', onSelect: () => push(`/page/${params.pageId}/add`) }}
-    /> -->
+    />
   </ViewContent>
 </View>
 
