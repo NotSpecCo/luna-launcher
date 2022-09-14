@@ -1,3 +1,13 @@
+# [1.7.0](https://github.com/garredow/luna-launcher/compare/v1.6.0...v1.7.0) (2022-09-14)
+
+
+### Features
+
+* **clock:** add context menu actions ([9fb9d24](https://github.com/garredow/luna-launcher/commit/9fb9d2472ab592681365322ba121293954448474))
+* enable moving widgets up and down ([575300d](https://github.com/garredow/luna-launcher/commit/575300dc1a326665a1d80511b3fcedefa73fd5d7))
+* resize app widgets ([5a00f65](https://github.com/garredow/luna-launcher/commit/5a00f65c4188c41665cccd252a7a79b07da7e39c))
+* unify all settings into a single widget ([a3c5103](https://github.com/garredow/luna-launcher/commit/a3c5103a4f144fdbc3ee98c92db6317c25c316dc))
+
 # [1.6.0](https://github.com/garredow/luna-launcher/compare/v1.5.0...v1.6.0) (2022-09-14)
 
 
