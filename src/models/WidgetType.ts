@@ -8,4 +8,5 @@ export type WidgetType =
   | 'cellData'
   | 'wifiTether'
   | 'usbTether'
-  | 'airplaneMode';
+  | 'airplaneMode'
+  | 'geolocation';

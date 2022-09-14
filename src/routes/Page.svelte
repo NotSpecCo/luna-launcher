@@ -11,6 +11,7 @@
   import CellDataWidget from '../components/CellDataWidget.svelte';
   import ClockWidget from '../components/ClockWidget.svelte';
   import FavAppsWidget from '../components/FavAppsWidget.svelte';
+  import GeolocationWidget from '../components/GeolocationWidget.svelte';
   import SpacerWidget from '../components/SpacerWidget.svelte';
   import Statusbar from '../components/Statusbar.svelte';
   import UsbTetherWidget from '../components/UsbTetherWidget.svelte';
@@ -48,6 +49,8 @@
         return UsbTetherWidget;
       case 'airplaneMode':
         return AirplaneModeWidget;
+      case 'geolocation':
+        return GeolocationWidget;
     }
   }
 

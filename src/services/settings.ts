@@ -145,12 +145,35 @@ export class Settings {
       await self.bluetooth.disable();
       await self.cellularData.disable();
       await self.wifiTethering.disable();
+      await self.geolocation.disable();
 
       return setEnabled('ril.radio.disabled', true);
     },
 
     disable(): Promise<void> {
       return setEnabled('ril.radio.disabled', false);
+    },
+  };
+
+  static geolocation = {
+    async subscribe(callback: (enabled: boolean) => void) {
+      return subscribe('geolocation.enabled', callback);
+    },
+
+    unsubscribe(observer: (evt: any) => void) {
+      unsubscribe('geolocation.enabled', observer);
+    },
+
+    status(): Promise<boolean> {
+      return getStatus('geolocation.enabled');
+    },
+
+    enable(): Promise<void> {
+      return setEnabled('geolocation.enabled', true);
+    },
+
+    disable(): Promise<void> {
+      return setEnabled('geolocation.enabled', false);
     },
   };
 }

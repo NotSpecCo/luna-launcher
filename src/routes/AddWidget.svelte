@@ -7,6 +7,7 @@
   import MdAirplanemodeActive from 'svelte-icons/md/MdAirplanemodeActive.svelte';
   import MdBluetooth from 'svelte-icons/md/MdBluetooth.svelte';
   import MdFavorite from 'svelte-icons/md/MdFavorite.svelte';
+  import MdLocationOn from 'svelte-icons/md/MdLocationOn.svelte';
   import MdNetworkCell from 'svelte-icons/md/MdNetworkCell.svelte';
   import MdSwapVert from 'svelte-icons/md/MdSwapVert.svelte';
   import MdWifi from 'svelte-icons/md/MdWifi.svelte';
@@ -63,6 +64,9 @@
       case 'airplaneMode':
         name = 'Airplane Mode';
         break;
+      case 'geolocation':
+        name = 'Geolocation';
+        break;
     }
 
     return {
@@ -112,6 +116,11 @@
       icon={MdNetworkCell}
       primaryText="Cellular Data"
       navi={{ itemId: 'cellData', onSelect: () => add('cellData') }}
+    />
+    <ListItem
+      icon={MdLocationOn}
+      primaryText="Geolocation"
+      navi={{ itemId: 'geolocation', onSelect: () => add('geolocation') }}
     />
     <ListItem
       icon={MdWifi}
