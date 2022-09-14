@@ -1,9 +1,15 @@
 <script lang="ts">
-  import Typography from 'onyx-ui/components/Typography.svelte';
-
   import ListItem from 'onyx-ui/components/list/ListItem.svelte';
+  import Typography from 'onyx-ui/components/Typography.svelte';
   import View from 'onyx-ui/components/view/View.svelte';
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
+  import MdAccessTime from 'svelte-icons/md/MdAccessTime.svelte';
+  import MdBluetooth from 'svelte-icons/md/MdBluetooth.svelte';
+  import MdFavorite from 'svelte-icons/md/MdFavorite.svelte';
+  import MdNetworkCell from 'svelte-icons/md/MdNetworkCell.svelte';
+  import MdSwapVert from 'svelte-icons/md/MdSwapVert.svelte';
+  import MdWifi from 'svelte-icons/md/MdWifi.svelte';
+  import MdWifiTethering from 'svelte-icons/md/MdWifiTethering.svelte';
   import { pop } from 'svelte-spa-router';
   import ListHeader from '../components/ListHeader.svelte';
   import Statusbar from '../components/Statusbar.svelte';
@@ -70,35 +76,46 @@
     <Typography type="titleLarge" align="center">Add a Widget</Typography>
     <ListHeader title="General" />
     <ListItem
+      icon={MdAccessTime}
       primaryText="Clock"
       secondaryText="Displays date and time"
       navi={{ itemId: 'clock', onSelect: () => add('clock') }}
     />
     <ListItem
+      icon={MdSwapVert}
       primaryText="Spacer"
       secondaryText="Empty space"
       navi={{ itemId: 'spacer', onSelect: () => add('spacer') }}
     />
     <ListItem
+      icon={MdFavorite}
       primaryText="Favorite Apps"
       secondaryText="Grid of favorited apps"
       navi={{ itemId: 'favApps', onSelect: () => add('favApps') }}
     />
     <ListHeader title="Settings" />
     <ListItem
+      icon={MdBluetooth}
       primaryText="Bluetooth"
       navi={{ itemId: 'bluetooth', onSelect: () => add('bluetooth') }}
     />
     <ListItem
+      icon={MdNetworkCell}
       primaryText="Cellular Data"
       navi={{ itemId: 'cellData', onSelect: () => add('cellData') }}
     />
-    <ListItem primaryText="Wi-Fi" navi={{ itemId: 'wifi', onSelect: () => add('wifi') }} />
     <ListItem
+      icon={MdWifi}
+      primaryText="Wi-Fi"
+      navi={{ itemId: 'wifi', onSelect: () => add('wifi') }}
+    />
+    <ListItem
+      icon={MdWifiTethering}
       primaryText="USB Tether"
       navi={{ itemId: 'usbTether', onSelect: () => add('usbTether') }}
     />
     <ListItem
+      icon={MdWifiTethering}
       primaryText="Wi-Fi Tether"
       navi={{ itemId: 'wifiTether', onSelect: () => add('wifiTether') }}
     />
