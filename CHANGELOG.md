@@ -1,3 +1,11 @@
+# [1.5.0](https://github.com/garredow/luna-launcher/compare/v1.4.0...v1.5.0) (2022-09-14)
+
+
+### Features
+
+* add icons to 'add a widget' page ([bf02e73](https://github.com/garredow/luna-launcher/commit/bf02e7327cab8acf1aaa5124c74ead31dbe457ea))
+* add settings widgets ([f83a6df](https://github.com/garredow/luna-launcher/commit/f83a6df36a74a02514e01efbfa656c2da75c0f94))
+
 # [1.4.0](https://github.com/garredow/luna-launcher/compare/v1.3.0...v1.4.0) (2022-09-13)
 
 
