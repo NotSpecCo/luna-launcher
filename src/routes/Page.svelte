@@ -7,7 +7,6 @@
   import AppIconWidget from '../components/AppIconWidget.svelte';
   import ClockWidget from '../components/ClockWidget.svelte';
   import SettingsWidget from '../components/SettingsWidget.svelte';
-  import SpacerWidget from '../components/SpacerWidget.svelte';
   import Statusbar from '../components/Statusbar.svelte';
   import type { WidgetType } from '../models';
   import { pages } from '../stores/pages';
@@ -23,8 +22,6 @@
         return ClockWidget;
       case 'appIcon':
         return AppIconWidget;
-      case 'spacer':
-        return SpacerWidget;
       case 'wifi':
         return SettingsWidget;
       case 'cellData':
