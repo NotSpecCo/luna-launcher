@@ -78,7 +78,7 @@
   >
     <img
       class="icon"
-      style={`height: ${64}px; width: ${64}px;`}
+      style={`height: ${60}px; width: ${60}px;`}
       src={app.getIconUrl('largest')}
       alt=""
     />
