@@ -4,13 +4,13 @@
 
   import type { Widget } from '../models/Widget';
   import { apps } from '../stores/apps';
-  import AppGridItem from './AppGridItem.svelte';
 
   export let widget: Widget<{
     appOrigin: string;
   }>;
   export let editing = false;
   export let onRemove: () => void;
+  export let onMove: (direction: 'up' | 'down') => void;
 
   const app = $apps.find((a) => a.origin === widget.data.appOrigin);
 </script>
@@ -42,9 +42,47 @@
     </div>
   </NavItem>
 {:else}
-  <div class="root">
-    <AppGridItem {app} size={64} />
-  </div>
+  <NavItem
+    display="inline-block"
+    navi={{
+      itemId: app.origin,
+      onSelect: () => app.launch(),
+      onFocus: () => {},
+    }}
+    contextMenu={{
+      title: widget.name,
+      items: [
+        {
+          label: 'Remove',
+          onSelect: () => {
+            onRemove();
+            Onyx.contextMenu.close();
+          },
+        },
+        {
+          label: 'Move Up',
+          onSelect: () => {
+            onMove('up');
+            Onyx.contextMenu.close();
+          },
+        },
+        {
+          label: 'Move Down',
+          onSelect: () => {
+            onMove('down');
+            Onyx.contextMenu.close();
+          },
+        },
+      ],
+    }}
+  >
+    <img
+      class="icon"
+      style={`height: ${64}px; width: ${64}px;`}
+      src={app.getIconUrl('largest')}
+      alt=""
+    />
+  </NavItem>
 {/if}
 
 <style>

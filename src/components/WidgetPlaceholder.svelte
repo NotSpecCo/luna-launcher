@@ -8,6 +8,7 @@
   export let height: number;
   export let display: 'inline-block' | 'block' = 'block';
   export let onRemove: () => void;
+  export let onMove: (direction: 'up' | 'down') => void;
 
   let style = `height: ${height}px;`;
   if (display === 'inline-block') {
@@ -25,6 +26,20 @@
         label: 'Remove',
         onSelect: () => {
           onRemove();
+          Onyx.contextMenu.close();
+        },
+      },
+      {
+        label: 'Move Up',
+        onSelect: () => {
+          onMove('up');
+          Onyx.contextMenu.close();
+        },
+      },
+      {
+        label: 'Move Down',
+        onSelect: () => {
+          onMove('down');
           Onyx.contextMenu.close();
         },
       },

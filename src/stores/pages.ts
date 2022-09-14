@@ -2,13 +2,21 @@ import { generateId } from 'onyx-ui/utils';
 import { get, writable } from 'svelte/store';
 import type { Page, Widget } from '../models';
 import { Storage } from '../services/storage';
+import { moveArrayItem } from '../utils/moveArrayItem';
 
 const defaultPages: Page[] = [
   {
     id: 'left',
     widgets: [
       { id: generateId(), type: 'clock', name: 'Clock', data: {} },
-      // { id: generateId(), type: 'spacer', name: 'Spacer', data: { height: 30 } },
+      { id: generateId(), type: 'spacer', name: 'Spacer', data: { height: 10 } },
+      // { id: generateId(), type: 'wifi', name: 'Wi-Fi', data: {} },
+      // { id: generateId(), type: 'cellData', name: 'Cellular Data', data: {} },
+      // { id: generateId(), type: 'bluetooth', name: 'Bluetooth', data: {} },
+      // { id: generateId(), type: 'wifiTether', name: 'Wi-Fi Tether', data: {} },
+      // { id: generateId(), type: 'usbTether', name: 'USB Tether', data: {} },
+      // { id: generateId(), type: 'airplaneMode', name: 'Airplane Mode', data: {} },
+      // { id: generateId(), type: 'geolocation', name: 'Geolocation', data: {} },
       // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '1' } },
       // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '2' } },
       // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '3' } },
@@ -59,11 +67,23 @@ function createStore() {
     store.set(pages);
   }
 
+  function moveWidget(pageId: string, widgetId: string, direction: 'up' | 'down') {
+    const pages = get(store);
+    const pageIndex = pages.findIndex((a) => a.id === pageId);
+    const widgetIndex = pages[pageIndex].widgets.findIndex((a) => a.id === widgetId);
+    const newIndex = direction === 'up' ? widgetIndex - 1 : widgetIndex + 1;
+
+    moveArrayItem(pages[pageIndex].widgets, widgetIndex, newIndex);
+
+    store.set(pages);
+  }
+
   return {
     subscribe: store.subscribe,
     getPage,
     addWidget,
     removeWidget,
+    moveWidget,
   };
 }
 

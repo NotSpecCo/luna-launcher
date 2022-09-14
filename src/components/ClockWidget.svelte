@@ -6,6 +6,7 @@
   export let widget: Widget<any>;
   export let editing = false;
   export let onRemove: () => void;
+  export let onMove: (direction: 'up' | 'down') => void;
 
   let now = new Date();
 
@@ -17,7 +18,7 @@
 </script>
 
 {#if editing}
-  <WidgetPlaceholder id={widget.id} name={widget.name} height={36} {onRemove} />
+  <WidgetPlaceholder id={widget.id} name={widget.name} height={36} {onRemove} {onMove} />
 {:else}
   <div class="root">
     <div class="time">{now.toLocaleTimeString()}</div>

@@ -86,6 +86,7 @@
         {widget}
         {editing}
         onRemove={() => pages.removeWidget(page.id, widget.id)}
+        onMove={(dir) => pages.moveWidget(page.id, widget.id, dir)}
       />
     {/each}
     {#if editing}
