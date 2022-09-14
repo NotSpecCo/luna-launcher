@@ -1,6 +1,6 @@
 <script lang="ts">
   import ToggleRow from 'onyx-ui/components/form/ToggleRow.svelte';
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
   import type { Widget } from '../models';
   import { Settings } from '../services/settings';
   import WidgetPlaceholder from './WidgetPlaceholder.svelte';
@@ -10,9 +10,12 @@
   export let onRemove: () => void;
 
   let status = false;
+  let observer;
   onMount(async () => {
-    status = await Settings.wifi.status();
+    observer = await Settings.wifi.subscribe((val) => (status = val));
   });
+
+  onDestroy(() => Settings.wifi.unsubscribe(observer));
 
   async function handleChange(val: boolean) {
     if (val) {

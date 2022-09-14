@@ -18,6 +18,14 @@ export class Settings {
   }
 
   static bluetooth = {
+    async subscribe(callback: (enabled: boolean) => void) {
+      return subscribe('bluetooth.enabled', callback);
+    },
+
+    unsubscribe(observer: (evt: any) => void) {
+      unsubscribe('bluetooth.enabled', observer);
+    },
+
     status(): Promise<boolean> {
       return getStatus('bluetooth.enabled');
     },
@@ -32,6 +40,14 @@ export class Settings {
   };
 
   static wifi = {
+    async subscribe(callback: (enabled: boolean) => void) {
+      return subscribe('wifi.enabled', callback);
+    },
+
+    unsubscribe(observer: (evt: any) => void) {
+      unsubscribe('wifi.enabled', observer);
+    },
+
     status(): Promise<boolean> {
       return getStatus('wifi.enabled');
     },
@@ -46,6 +62,14 @@ export class Settings {
   };
 
   static usbTethering = {
+    async subscribe(callback: (enabled: boolean) => void) {
+      return subscribe('tethering.usb.enabled', callback);
+    },
+
+    unsubscribe(observer: (evt: any) => void) {
+      unsubscribe('tethering.usb.enabled', observer);
+    },
+
     status(): Promise<boolean> {
       return getStatus('tethering.usb.enabled');
     },
@@ -60,6 +84,14 @@ export class Settings {
   };
 
   static wifiTethering = {
+    async subscribe(callback: (enabled: boolean) => void) {
+      return subscribe('tethering.wifi.enabled', callback);
+    },
+
+    unsubscribe(observer: (evt: any) => void) {
+      unsubscribe('tethering.wifi.enabled', observer);
+    },
+
     status(): Promise<boolean> {
       return getStatus('tethering.wifi.enabled');
     },
@@ -74,6 +106,14 @@ export class Settings {
   };
 
   static cellularData = {
+    async subscribe(callback: (enabled: boolean) => void) {
+      return subscribe('ril.data.enabled', callback);
+    },
+
+    unsubscribe(observer: (evt: any) => void) {
+      unsubscribe('ril.data.enabled', observer);
+    },
+
     status(): Promise<boolean> {
       return getStatus('ril.data.enabled');
     },
@@ -88,6 +128,14 @@ export class Settings {
   };
 
   static airplaneMode = {
+    async subscribe(callback: (enabled: boolean) => void) {
+      return subscribe('ril.radio.disabled', callback);
+    },
+
+    unsubscribe(observer: (evt: any) => void) {
+      unsubscribe('ril.radio.disabled', observer);
+    },
+
     status(): Promise<boolean> {
       return getStatus('ril.radio.disabled');
     },
@@ -100,6 +148,23 @@ export class Settings {
       return setEnabled('ril.radio.disabled', false);
     },
   };
+}
+
+async function subscribe(key: string, callback: (enabled: boolean) => void) {
+  const initial = await getStatus(key);
+  callback(initial);
+
+  const observer = function observer(evt) {
+    callback(evt.settingValue);
+  };
+
+  Navigator.mozSettings.addObserver(key, observer);
+
+  return observer;
+}
+
+function unsubscribe(key: string, observer: (evt: any) => void) {
+  Navigator.mozSettings.removeObserver(key, observer);
 }
 
 function getStatus(key: string): Promise<boolean> {
@@ -126,3 +191,5 @@ function setEnabled(key: string, val: boolean): Promise<void> {
     };
   });
 }
+
+const self = Settings;
