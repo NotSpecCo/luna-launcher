@@ -7,4 +7,5 @@ export type WidgetType =
   | 'bluetooth'
   | 'cellData'
   | 'wifiTether'
-  | 'usbTether';
+  | 'usbTether'
+  | 'airplaneMode';

@@ -5,6 +5,7 @@
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
   import { onDestroy } from 'svelte';
   import { push, replace } from 'svelte-spa-router';
+  import AirplaneModeWidget from '../components/AirplaneModeWidget.svelte';
   import AppIconWidget from '../components/AppIconWidget.svelte';
   import BluetoothWidget from '../components/BluetoothWidget.svelte';
   import CellDataWidget from '../components/CellDataWidget.svelte';
@@ -45,6 +46,8 @@
         return WifiTetherWidget;
       case 'usbTether':
         return UsbTetherWidget;
+      case 'airplaneMode':
+        return AirplaneModeWidget;
     }
   }
 

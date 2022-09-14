@@ -4,6 +4,7 @@
   import View from 'onyx-ui/components/view/View.svelte';
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
   import MdAccessTime from 'svelte-icons/md/MdAccessTime.svelte';
+  import MdAirplanemodeActive from 'svelte-icons/md/MdAirplanemodeActive.svelte';
   import MdBluetooth from 'svelte-icons/md/MdBluetooth.svelte';
   import MdFavorite from 'svelte-icons/md/MdFavorite.svelte';
   import MdNetworkCell from 'svelte-icons/md/MdNetworkCell.svelte';
@@ -59,6 +60,9 @@
       case 'usbTether':
         name = 'USB Tether';
         break;
+      case 'airplaneMode':
+        name = 'Airplane Mode';
+        break;
     }
 
     return {
@@ -94,6 +98,11 @@
       navi={{ itemId: 'favApps', onSelect: () => add('favApps') }}
     />
     <ListHeader title="Settings" />
+    <ListItem
+      icon={MdAirplanemodeActive}
+      primaryText="Airplane Mode"
+      navi={{ itemId: 'airplaneMode', onSelect: () => add('airplaneMode') }}
+    />
     <ListItem
       icon={MdBluetooth}
       primaryText="Bluetooth"

@@ -140,7 +140,12 @@ export class Settings {
       return getStatus('ril.radio.disabled');
     },
 
-    enable(): Promise<void> {
+    async enable(): Promise<void> {
+      await self.wifi.disable();
+      await self.bluetooth.disable();
+      await self.cellularData.disable();
+      await self.wifiTethering.disable();
+
       return setEnabled('ril.radio.disabled', true);
     },
 
