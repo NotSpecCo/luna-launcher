@@ -11,7 +11,7 @@
   export let onMove: (direction: 'up' | 'down') => void;
 
   let status = false;
-  let observer;
+  let observer: (evt: any) => void;
   let setting = getSettingsMethods(widget.type);
 
   onMount(async () => {
