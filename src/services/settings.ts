@@ -61,7 +61,7 @@ export class Settings {
     },
   };
 
-  static usbTethering = {
+  static usbTether = {
     async subscribe(callback: (enabled: boolean) => void) {
       return subscribe('tethering.usb.enabled', callback);
     },
@@ -83,7 +83,7 @@ export class Settings {
     },
   };
 
-  static wifiTethering = {
+  static wifiTether = {
     async subscribe(callback: (enabled: boolean) => void) {
       return subscribe('tethering.wifi.enabled', callback);
     },
@@ -144,7 +144,7 @@ export class Settings {
       await self.wifi.disable();
       await self.bluetooth.disable();
       await self.cellularData.disable();
-      await self.wifiTethering.disable();
+      await self.wifiTether.disable();
       await self.geolocation.disable();
 
       return setEnabled('ril.radio.disabled', true);

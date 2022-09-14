@@ -5,18 +5,12 @@
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
   import { onDestroy } from 'svelte';
   import { push, replace } from 'svelte-spa-router';
-  import AirplaneModeWidget from '../components/AirplaneModeWidget.svelte';
   import AppIconWidget from '../components/AppIconWidget.svelte';
-  import BluetoothWidget from '../components/BluetoothWidget.svelte';
-  import CellDataWidget from '../components/CellDataWidget.svelte';
   import ClockWidget from '../components/ClockWidget.svelte';
   import FavAppsWidget from '../components/FavAppsWidget.svelte';
-  import GeolocationWidget from '../components/GeolocationWidget.svelte';
+  import SettingsWidget from '../components/SettingsWidget.svelte';
   import SpacerWidget from '../components/SpacerWidget.svelte';
   import Statusbar from '../components/Statusbar.svelte';
-  import UsbTetherWidget from '../components/UsbTetherWidget.svelte';
-  import WifiTetherWidget from '../components/WifiTetherWidget.svelte';
-  import WifiWidget from '../components/WifiWidget.svelte';
   import type { WidgetType } from '../models';
   import { pages } from '../stores/pages';
 
@@ -38,19 +32,19 @@
       case 'favApps':
         return FavAppsWidget;
       case 'wifi':
-        return WifiWidget;
+        return SettingsWidget;
       case 'cellData':
-        return CellDataWidget;
+        return SettingsWidget;
       case 'bluetooth':
-        return BluetoothWidget;
+        return SettingsWidget;
       case 'wifiTether':
-        return WifiTetherWidget;
+        return SettingsWidget;
       case 'usbTether':
-        return UsbTetherWidget;
+        return SettingsWidget;
       case 'airplaneMode':
-        return AirplaneModeWidget;
+        return SettingsWidget;
       case 'geolocation':
-        return GeolocationWidget;
+        return SettingsWidget;
     }
   }
 
@@ -86,7 +80,7 @@
 <View backgroundImageUrl="images/wallpaper.png">
   <Statusbar />
   <ViewContent>
-    {#each page.widgets as widget}
+    {#each page.widgets as widget (widget.id)}
       <svelte:component
         this={getComponent(widget.type)}
         {widget}
