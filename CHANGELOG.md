@@ -1,3 +1,13 @@
+# [1.8.0](https://github.com/garredow/luna-launcher/compare/v1.7.0...v1.8.0) (2022-09-14)
+
+
+### Features
+
+* add new spacer widget ([0ae6502](https://github.com/garredow/luna-launcher/commit/0ae650208166b4b4e2cca70632e3b96396546f37))
+* remove edit mode ([98690f0](https://github.com/garredow/luna-launcher/commit/98690f069748e1b8cff4ccdf0b3b795cd74cc83c))
+* remove favorite apps widget ([01e6aef](https://github.com/garredow/luna-launcher/commit/01e6aef608ba52ce2d332fd7132b7e4dfc8ff9e3))
+* remove spacer widget ([3d790fa](https://github.com/garredow/luna-launcher/commit/3d790fa90b8bed3a0502ea100a643c84dce6beab))
+
 # [1.7.0](https://github.com/garredow/luna-launcher/compare/v1.6.0...v1.7.0) (2022-09-14)
 
 
