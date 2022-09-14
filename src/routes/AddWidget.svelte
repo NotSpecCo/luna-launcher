@@ -38,6 +38,21 @@
       case 'favApps':
         name = 'Favorite Apps';
         break;
+      case 'wifi':
+        name = 'Wi-Fi';
+        break;
+      case 'bluetooth':
+        name = 'Bluetooth';
+        break;
+      case 'cellData':
+        name = 'Cellular Data';
+        break;
+      case 'wifiTether':
+        name = 'Wi-Fi Tether';
+        break;
+      case 'usbTether':
+        name = 'USB Tether';
+        break;
     }
 
     return {
@@ -68,6 +83,24 @@
       primaryText="Favorite Apps"
       secondaryText="Grid of favorited apps"
       navi={{ itemId: 'favApps', onSelect: () => add('favApps') }}
+    />
+    <ListHeader title="Settings" />
+    <ListItem
+      primaryText="Bluetooth"
+      navi={{ itemId: 'bluetooth', onSelect: () => add('bluetooth') }}
+    />
+    <ListItem
+      primaryText="Cellular Data"
+      navi={{ itemId: 'cellData', onSelect: () => add('cellData') }}
+    />
+    <ListItem primaryText="Wi-Fi" navi={{ itemId: 'wifi', onSelect: () => add('wifi') }} />
+    <ListItem
+      primaryText="USB Tether"
+      navi={{ itemId: 'usbTether', onSelect: () => add('usbTether') }}
+    />
+    <ListItem
+      primaryText="Wi-Fi Tether"
+      navi={{ itemId: 'wifiTether', onSelect: () => add('wifiTether') }}
     />
     <ListHeader title="Apps" />
     {#each $apps as app}

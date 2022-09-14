@@ -6,10 +6,15 @@
   import { onDestroy } from 'svelte';
   import { push, replace } from 'svelte-spa-router';
   import AppIconWidget from '../components/AppIconWidget.svelte';
+  import BluetoothWidget from '../components/BluetoothWidget.svelte';
+  import CellDataWidget from '../components/CellDataWidget.svelte';
   import ClockWidget from '../components/ClockWidget.svelte';
   import FavAppsWidget from '../components/FavAppsWidget.svelte';
   import SpacerWidget from '../components/SpacerWidget.svelte';
   import Statusbar from '../components/Statusbar.svelte';
+  import UsbTetherWidget from '../components/UsbTetherWidget.svelte';
+  import WifiTetherWidget from '../components/WifiTetherWidget.svelte';
+  import WifiWidget from '../components/WifiWidget.svelte';
   import type { WidgetType } from '../models';
   import { pages } from '../stores/pages';
 
@@ -30,6 +35,16 @@
         return SpacerWidget;
       case 'favApps':
         return FavAppsWidget;
+      case 'wifi':
+        return WifiWidget;
+      case 'cellData':
+        return CellDataWidget;
+      case 'bluetooth':
+        return BluetoothWidget;
+      case 'wifiTether':
+        return WifiTetherWidget;
+      case 'usbTether':
+        return UsbTetherWidget;
     }
   }
 
