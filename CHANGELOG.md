@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/garredow/luna-launcher/compare/v1.5.0...v1.6.0) (2022-09-14)
+
+
+### Features
+
+* add airplane mode widget ([ce00093](https://github.com/garredow/luna-launcher/commit/ce00093dc71b633f6e6f751a576b72285708d66c))
+* add geolocation widget ([2c3aa55](https://github.com/garredow/luna-launcher/commit/2c3aa55dfa14d7c80136ffcfa69fc22e7316c9d2))
+* add listeners to settings widgets to keep them updated ([05bdedc](https://github.com/garredow/luna-launcher/commit/05bdedc60ca969620e7962d843445450366fe51b))
+
 # [1.5.0](https://github.com/garredow/luna-launcher/compare/v1.4.0...v1.5.0) (2022-09-14)
 
 
