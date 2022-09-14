@@ -1,13 +1,10 @@
 <script lang="ts">
   import NavItem from 'onyx-ui/components/nav/NavItem.svelte';
   import { Onyx } from 'onyx-ui/services';
-
   import { onMount } from 'svelte';
   import type { Widget } from '../models';
-  import WidgetPlaceholder from './WidgetPlaceholder.svelte';
 
   export let widget: Widget<any>;
-  export let editing = false;
   export let onRemove: () => void;
   export let onMove: (direction: 'up' | 'down') => void;
 
@@ -20,48 +17,44 @@
   });
 </script>
 
-{#if editing}
-  <WidgetPlaceholder id={widget.id} name={widget.name} height={36} {onRemove} {onMove} />
-{:else}
-  <NavItem
-    navi={{
-      itemId: widget.id,
-      onSelect: () => {},
-      onFocus: () => {},
-    }}
-    contextMenu={{
-      title: widget.name,
-      items: [
-        {
-          label: 'Remove',
-          onSelect: () => {
-            onRemove();
-            Onyx.contextMenu.close();
-          },
+<NavItem
+  navi={{
+    itemId: widget.id,
+    onSelect: () => {},
+    onFocus: () => {},
+  }}
+  contextMenu={{
+    title: widget.name,
+    items: [
+      {
+        label: 'Remove',
+        onSelect: () => {
+          onRemove();
+          Onyx.contextMenu.close();
         },
-        {
-          label: 'Move Up',
-          onSelect: () => {
-            onMove('up');
-            Onyx.contextMenu.close();
-          },
+      },
+      {
+        label: 'Move Up',
+        onSelect: () => {
+          onMove('up');
+          Onyx.contextMenu.close();
         },
-        {
-          label: 'Move Down',
-          onSelect: () => {
-            onMove('down');
-            Onyx.contextMenu.close();
-          },
+      },
+      {
+        label: 'Move Down',
+        onSelect: () => {
+          onMove('down');
+          Onyx.contextMenu.close();
         },
-      ],
-    }}
-  >
-    <div class="root">
-      <div class="time">{now.toLocaleTimeString()}</div>
-      <div class="date">{now.toLocaleDateString()}</div>
-    </div>
-  </NavItem>
-{/if}
+      },
+    ],
+  }}
+>
+  <div class="root">
+    <div class="time">{now.toLocaleTimeString()}</div>
+    <div class="date">{now.toLocaleDateString()}</div>
+  </div>
+</NavItem>
 
 <style>
   .root {
