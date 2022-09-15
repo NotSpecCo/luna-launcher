@@ -1,7 +1,7 @@
 import { App } from '../entities/App';
-import type { Connection } from '../models';
+import type { Connection, Contact } from '../models';
 import { generateId } from '../utils';
-import { toConnection } from '../utils/mappers';
+import { toConnection, toContact } from '../utils/mappers';
 
 const Navigator: any = navigator;
 const isDevice = !!Navigator.mozApps;
@@ -519,14 +519,28 @@ export class Device {
     return new Promise((resolve, reject) => {
       let req = Navigator.mozApps.mgmt.getAll();
       req.onsuccess = function () {
-        // this.result[0].launch();
-        // console.log('launched');
-        console.log('raw', this.result);
-
         resolve(this.result.map((a) => new App(a)).sort((a, b) => a.name.localeCompare(b.name)));
       };
       req.onerror = function () {
-        // Convert the DOMException to a human-readable error
+        reject(new Error(this.error.name + ' ' + this.error.message));
+      };
+    });
+  }
+  static getContacts(): Promise<Contact[]> {
+    if (!isDevice) return Promise.resolve([]);
+
+    return new Promise((resolve, reject) => {
+      const results = [];
+      let req = Navigator.mozContacts.getAll({ sortBy: 'name', sortOrder: 'ascending' });
+      req.onsuccess = function () {
+        if (this.result) {
+          results.push(toContact(this.result));
+          this.continue();
+        } else {
+          resolve(results);
+        }
+      };
+      req.onerror = function () {
         reject(new Error(this.error.name + ' ' + this.error.message));
       };
     });

@@ -26,7 +26,8 @@
       "access": "readwrite"
     },
     "wifi-manage": {},
-    "bluetooth": {}
+    "bluetooth": {},
+    "contacts": { "access": "read" }
   },
   "chrome": {
     "statusbar": "overlap"
