@@ -17,6 +17,54 @@ export class Settings {
     return this.lock;
   }
 
+  static devtoolsOverlay = {
+    async subscribe(callback: (enabled: boolean) => void) {
+      return subscribe('devtools.overlay', callback);
+    },
+
+    unsubscribe(observer: (evt: any) => void) {
+      unsubscribe('devtools.overlay', observer);
+    },
+
+    status(): Promise<boolean> {
+      return getValue('devtools.overlay');
+    },
+
+    enable(): Promise<void> {
+      return setValue('devtools.overlay', true);
+    },
+
+    disable(): Promise<void> {
+      return setValue('devtools.overlay', false);
+    },
+  };
+
+  static debugMode = {
+    async subscribe(callback: (enabled: boolean) => void) {
+      const cb = (value: string) => {
+        callback(value !== 'disabled');
+      };
+      return subscribe('debugger.remote-mode', cb);
+    },
+
+    unsubscribe(observer: (evt: any) => void) {
+      unsubscribe('debugger.remote-mode', observer);
+    },
+
+    async status(): Promise<boolean> {
+      const status = await getValue<string>('debugger.remote-mode');
+      return status === 'adb-devtools ';
+    },
+
+    enable(): Promise<void> {
+      return setValue('debugger.remote-mode', 'adb-devtools');
+    },
+
+    disable(): Promise<void> {
+      return setValue('debugger.remote-mode', 'disabled');
+    },
+  };
+
   static bluetooth = {
     async subscribe(callback: (enabled: boolean) => void) {
       return subscribe('bluetooth.enabled', callback);
@@ -27,15 +75,15 @@ export class Settings {
     },
 
     status(): Promise<boolean> {
-      return getStatus('bluetooth.enabled');
+      return getValue('bluetooth.enabled');
     },
 
     enable(): Promise<void> {
-      return setEnabled('bluetooth.enabled', true);
+      return setValue('bluetooth.enabled', true);
     },
 
     disable(): Promise<void> {
-      return setEnabled('bluetooth.enabled', false);
+      return setValue('bluetooth.enabled', false);
     },
   };
 
@@ -49,15 +97,15 @@ export class Settings {
     },
 
     status(): Promise<boolean> {
-      return getStatus('wifi.enabled');
+      return getValue('wifi.enabled');
     },
 
     enable(): Promise<void> {
-      return setEnabled('wifi.enabled', true);
+      return setValue('wifi.enabled', true);
     },
 
     disable(): Promise<void> {
-      return setEnabled('wifi.enabled', false);
+      return setValue('wifi.enabled', false);
     },
   };
 
@@ -71,37 +119,37 @@ export class Settings {
     },
 
     status(): Promise<boolean> {
-      return getStatus('tethering.usb.enabled');
+      return getValue('tethering.usb.enabled');
     },
 
     enable(): Promise<void> {
-      return setEnabled('tethering.usb.enabled', true);
+      return setValue('tethering.usb.enabled', true);
     },
 
     disable(): Promise<void> {
-      return setEnabled('tethering.usb.enabled', false);
+      return setValue('tethering.usb.enabled', false);
     },
   };
 
   static wifiTether = {
     async subscribe(callback: (enabled: boolean) => void) {
-      return subscribe('tethering.wifi.enabled', callback);
+      return subscribe('dom.mozApps.signed_apps_installable_from', callback);
     },
 
     unsubscribe(observer: (evt: any) => void) {
-      unsubscribe('tethering.wifi.enabled', observer);
+      unsubscribe('dom.mozApps.signed_apps_installable_from', observer);
     },
 
     status(): Promise<boolean> {
-      return getStatus('tethering.wifi.enabled');
+      return getValue('dom.mozApps.signed_apps_installable_from');
     },
 
     enable(): Promise<void> {
-      return setEnabled('tethering.wifi.enabled', true);
+      return setValue('dom.mozApps.signed_apps_installable_from', true);
     },
 
     disable(): Promise<void> {
-      return setEnabled('tethering.wifi.enabled', false);
+      return setValue('dom.mozApps.signed_apps_installable_from', false);
     },
   };
 
@@ -115,15 +163,15 @@ export class Settings {
     },
 
     status(): Promise<boolean> {
-      return getStatus('ril.data.enabled');
+      return getValue('ril.data.enabled');
     },
 
     enable(): Promise<void> {
-      return setEnabled('ril.data.enabled', true);
+      return setValue('ril.data.enabled', true);
     },
 
     disable(): Promise<void> {
-      return setEnabled('ril.data.enabled', false);
+      return setValue('ril.data.enabled', false);
     },
   };
 
@@ -137,7 +185,7 @@ export class Settings {
     },
 
     status(): Promise<boolean> {
-      return getStatus('ril.radio.disabled');
+      return getValue('ril.radio.disabled');
     },
 
     async enable(): Promise<void> {
@@ -147,11 +195,11 @@ export class Settings {
       await self.wifiTether.disable();
       await self.geolocation.disable();
 
-      return setEnabled('ril.radio.disabled', true);
+      return setValue('ril.radio.disabled', true);
     },
 
     disable(): Promise<void> {
-      return setEnabled('ril.radio.disabled', false);
+      return setValue('ril.radio.disabled', false);
     },
   };
 
@@ -165,21 +213,21 @@ export class Settings {
     },
 
     status(): Promise<boolean> {
-      return getStatus('geolocation.enabled');
+      return getValue('geolocation.enabled');
     },
 
     enable(): Promise<void> {
-      return setEnabled('geolocation.enabled', true);
+      return setValue('geolocation.enabled', true);
     },
 
     disable(): Promise<void> {
-      return setEnabled('geolocation.enabled', false);
+      return setValue('geolocation.enabled', false);
     },
   };
 }
 
-async function subscribe(key: string, callback: (enabled: boolean) => void) {
-  const initial = await getStatus(key);
+async function subscribe(key: string, callback: (value: any) => void) {
+  const initial = await getValue(key);
   callback(initial);
 
   const observer = function observer(evt) {
@@ -195,12 +243,12 @@ function unsubscribe(key: string, observer: (evt: any) => void) {
   Navigator.mozSettings.removeObserver(key, observer);
 }
 
-function getStatus(key: string): Promise<boolean> {
+function getValue<T = boolean>(key: string): Promise<T> {
   return new Promise((resolve, reject) => {
     const req = Settings.getLock().get(key);
     req.onsuccess = function () {
       // console.log('getStatus', key, this.result[key]);
-      resolve(Boolean(this.result[key]));
+      resolve(this.result[key]);
     };
     req.onerror = function () {
       reject(new Error(this.error.name + ' ' + this.error.message));
@@ -208,7 +256,7 @@ function getStatus(key: string): Promise<boolean> {
   });
 }
 
-function setEnabled(key: string, val: boolean): Promise<void> {
+function setValue(key: string, val: boolean | string | number): Promise<void> {
   return new Promise((resolve, reject) => {
     const req = Settings.getLock().set({ [key]: val });
     req.onsuccess = function () {
