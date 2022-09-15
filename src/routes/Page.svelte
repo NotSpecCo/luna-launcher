@@ -69,7 +69,7 @@
   onDestroy(() => keys.unsubscribe());
 </script>
 
-<View backgroundImageUrl="images/wallpaper.png">
+<View backgroundImageUrl="images/wallpaper2.png">
   <Statusbar />
   <ViewContent>
     {#each page.widgets as widget (widget.id)}

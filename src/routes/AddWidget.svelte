@@ -71,7 +71,7 @@
   }
 </script>
 
-<View>
+<View backgroundImageUrl="images/wallpaper2.png">
   <Statusbar />
   <ViewContent>
     <Typography type="titleLarge" align="center">Add a Widget</Typography>
