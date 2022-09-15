@@ -1,3 +1,14 @@
+# [1.9.0](https://github.com/garredow/luna-launcher/compare/v1.8.0...v1.9.0) (2022-09-15)
+
+
+### Features
+
+* add base for devtools overlay and debug mode toggles ([aa049e7](https://github.com/garredow/luna-launcher/commit/aa049e74f37c035240171f2b1f730a96f836ae7f))
+* add contacts backend ([52bc0c8](https://github.com/garredow/luna-launcher/commit/52bc0c8dfcd7f9c7df127c08fa7aee3440b647fd))
+* add search page ([844a90c](https://github.com/garredow/luna-launcher/commit/844a90c6d7ddd37a638b2776d50e93569acc5926))
+* add search widget ([6da903e](https://github.com/garredow/luna-launcher/commit/6da903e3681e7533af922ea90dc22c7938d083f5))
+* use new wallpaper and on more views ([801dd80](https://github.com/garredow/luna-launcher/commit/801dd8090fd2b0444f31fb3de236a29ddeddee9d))
+
 # [1.8.0](https://github.com/garredow/luna-launcher/compare/v1.7.0...v1.8.0) (2022-09-14)
 
 
