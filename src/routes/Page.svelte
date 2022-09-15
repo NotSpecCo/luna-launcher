@@ -7,6 +7,7 @@
   import { push, replace } from 'svelte-spa-router';
   import AppIconWidget from '../components/AppIconWidget.svelte';
   import ClockWidget from '../components/ClockWidget.svelte';
+  import SearchWidget from '../components/SearchWidget.svelte';
   import SettingsWidgetRow from '../components/SettingsWidgetRow.svelte';
   import SpacerWidget from '../components/SpacerWidget.svelte';
   import Statusbar from '../components/Statusbar.svelte';
@@ -24,6 +25,8 @@
         return ClockWidget;
       case 'spacer':
         return SpacerWidget;
+      case 'search':
+        return SearchWidget;
       case 'appIcon':
         return AppIconWidget;
       case 'wifi':

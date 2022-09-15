@@ -9,6 +9,7 @@
   import MdBluetooth from 'svelte-icons/md/MdBluetooth.svelte';
   import MdLocationOn from 'svelte-icons/md/MdLocationOn.svelte';
   import MdNetworkCell from 'svelte-icons/md/MdNetworkCell.svelte';
+  import MdSearch from 'svelte-icons/md/MdSearch.svelte';
   import MdWifi from 'svelte-icons/md/MdWifi.svelte';
   import MdWifiTethering from 'svelte-icons/md/MdWifiTethering.svelte';
   import { pop } from 'svelte-spa-router';
@@ -38,6 +39,9 @@
     switch (type) {
       case 'clock':
         name = 'Clock';
+        break;
+      case 'search':
+        name = 'Search';
         break;
       case 'wifi':
         name = 'Wi-Fi';
@@ -81,6 +85,12 @@
       primaryText="Clock"
       secondaryText="Displays date and time"
       navi={{ itemId: 'clock', onSelect: () => add('clock') }}
+    />
+    <ListItem
+      icon={MdSearch}
+      primaryText="Search"
+      secondaryText="Open the search view"
+      navi={{ itemId: 'search', onSelect: () => add('search') }}
     />
     <ListItem
       icon={MdAllOut}
