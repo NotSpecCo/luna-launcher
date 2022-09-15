@@ -12,7 +12,9 @@
   import DeviceSettings from './routes/DeviceSettings.svelte';
   import Page from './routes/Page.svelte';
   import Redirect from './routes/Redirect.svelte';
+  import Search from './routes/Search.svelte';
   import { apps } from './stores/apps';
+  import { contacts } from './stores/contacts';
   import { settings } from './stores/settings';
 
   console.log(`Env: ${process.env.NODE_ENV}`);
@@ -25,6 +27,7 @@
     '/apps': AppList,
     '/settings': AppSettings,
     '/device': DeviceSettings,
+    '/search': Search,
     '*': Redirect,
   };
 
@@ -37,7 +40,7 @@
 
   onMount(async () => {
     await apps.refresh();
-    console.log('Apps:', $apps);
+    await contacts.refresh();
   });
 
   onDestroy(() => keys.unsubscribe());

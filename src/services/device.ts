@@ -527,7 +527,23 @@ export class Device {
     });
   }
   static getContacts(): Promise<Contact[]> {
-    if (!isDevice) return Promise.resolve([]);
+    if (!isDevice)
+      return Promise.resolve([
+        {
+          id: '1',
+          firstName: 'Garrett',
+          lastName: 'Downs',
+          fullName: 'Garrett Downs',
+          phoneNumber: '215-555-1234',
+        },
+        {
+          id: '2',
+          firstName: 'Bob',
+          lastName: 'Smith',
+          fullName: 'Bob Smith',
+          phoneNumber: '215-555-1234',
+        },
+      ]);
 
     return new Promise((resolve, reject) => {
       const results = [];

@@ -7,6 +7,7 @@
 
   const items = [
     { title: 'Home', route: '/home' },
+    { title: 'Search', route: '/search' },
     { title: 'Apps', route: '/apps' },
     { title: 'Launcher', route: '/settings' },
     { title: 'Device', route: '/device' },
