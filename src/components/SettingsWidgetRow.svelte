@@ -85,9 +85,3 @@
     <Toggle value={status} />
   </FormRow>
 </div>
-
-<style>
-  .root {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-</style>

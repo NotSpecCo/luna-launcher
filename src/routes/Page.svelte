@@ -7,7 +7,7 @@
   import { push, replace } from 'svelte-spa-router';
   import AppIconWidget from '../components/AppIconWidget.svelte';
   import ClockWidget from '../components/ClockWidget.svelte';
-  import SettingsWidget from '../components/SettingsWidget.svelte';
+  import SettingsWidgetRow from '../components/SettingsWidgetRow.svelte';
   import SpacerWidget from '../components/SpacerWidget.svelte';
   import Statusbar from '../components/Statusbar.svelte';
   import type { WidgetType } from '../models';
@@ -27,19 +27,19 @@
       case 'appIcon':
         return AppIconWidget;
       case 'wifi':
-        return SettingsWidget;
+        return SettingsWidgetRow;
       case 'cellData':
-        return SettingsWidget;
+        return SettingsWidgetRow;
       case 'bluetooth':
-        return SettingsWidget;
+        return SettingsWidgetRow;
       case 'wifiTether':
-        return SettingsWidget;
+        return SettingsWidgetRow;
       case 'usbTether':
-        return SettingsWidget;
+        return SettingsWidgetRow;
       case 'airplaneMode':
-        return SettingsWidget;
+        return SettingsWidgetRow;
       case 'geolocation':
-        return SettingsWidget;
+        return SettingsWidgetRow;
     }
   }
 
