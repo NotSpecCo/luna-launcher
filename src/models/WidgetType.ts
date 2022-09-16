@@ -9,4 +9,5 @@ export type WidgetType =
   | 'usbTether'
   | 'airplaneMode'
   | 'geolocation'
-  | 'search';
+  | 'search'
+  | 'networkStats';

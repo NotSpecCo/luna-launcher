@@ -45,7 +45,7 @@
     "typescript": "^4.0.0"
   },
   "dependencies": {
-    "date-fns": "^2.29.1",
+    "date-fns": "^2.29.3",
     "numeral": "^2.0.6",
     "object.getownpropertydescriptors": "^2.1.4",
     "onyx-keys": "^1.2.0",

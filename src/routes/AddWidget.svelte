@@ -7,6 +7,7 @@
   import MdAirplanemodeActive from 'svelte-icons/md/MdAirplanemodeActive.svelte';
   import MdAllOut from 'svelte-icons/md/MdAllOut.svelte';
   import MdBluetooth from 'svelte-icons/md/MdBluetooth.svelte';
+  import MdDataUsage from 'svelte-icons/md/MdDataUsage.svelte';
   import MdLocationOn from 'svelte-icons/md/MdLocationOn.svelte';
   import MdNetworkCell from 'svelte-icons/md/MdNetworkCell.svelte';
   import MdSearch from 'svelte-icons/md/MdSearch.svelte';
@@ -64,6 +65,9 @@
       case 'geolocation':
         name = 'Geolocation';
         break;
+      case 'networkStats':
+        name = 'Network Stats';
+        break;
     }
 
     return {
@@ -92,6 +96,26 @@
       secondaryText="Open the search view"
       navi={{ itemId: 'search', onSelect: () => add('search') }}
     />
+    <ListHeader title="Network" />
+    <ListItem
+      icon={MdDataUsage}
+      primaryText="Network Stats (1 day)"
+      secondaryText="Show data used over time"
+      navi={{ itemId: 'networkStats1', onSelect: () => add('networkStats', { days: 1 }) }}
+    />
+    <ListItem
+      icon={MdDataUsage}
+      primaryText="Network Stats (7 days)"
+      secondaryText="Show data used over time"
+      navi={{ itemId: 'networkStats7', onSelect: () => add('networkStats', { days: 7 }) }}
+    />
+    <ListItem
+      icon={MdDataUsage}
+      primaryText="Network Stats (31 days)"
+      secondaryText="Show data used over time"
+      navi={{ itemId: 'networkStats31', onSelect: () => add('networkStats', { days: 31 }) }}
+    />
+    <ListHeader title="Spacers" />
     <ListItem
       icon={MdAllOut}
       primaryText="1x1 Spacer"

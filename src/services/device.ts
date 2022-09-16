@@ -1,5 +1,6 @@
 import { App } from '../entities/App';
-import type { Connection, Contact } from '../models';
+import type { NetworkType } from '../enums';
+import type { Connection, Contact, Network } from '../models';
 import { generateId } from '../utils';
 import { toConnection, toContact } from '../utils/mappers';
 
@@ -574,8 +575,38 @@ export class Device {
       Navigator.mozTelephony.CALL_TYPE_VOICE,
       false
     );
-    // console.log('CALL RES', res);
-    // const res2 = await res.result;
-    // console.log('CALL RES2', res2);
+  }
+
+  static getNetworks(): Promise<Network[]> {
+    return new Promise((resolve, reject) => {
+      let req = Navigator.mozNetworkStats.getAvailableNetworks();
+      req.onsuccess = function () {
+        resolve(this.result);
+      };
+      req.onerror = function () {
+        reject(new Error(this.error.name + ' ' + this.error.message));
+      };
+    });
+  }
+
+  static async getNetworkStats(
+    networkType: NetworkType,
+    start: Date,
+    end: Date,
+    manifestUrl?: string
+  ): Promise<any> {
+    const networks = await this.getNetworks();
+    const network = networks[networkType];
+    const options = manifestUrl ? { appManifestURL: manifestUrl } : undefined;
+
+    return new Promise((resolve, reject) => {
+      let req = Navigator.mozNetworkStats.getSamples(network, start, end, options);
+      req.onsuccess = function () {
+        resolve(this.result);
+      };
+      req.onerror = function () {
+        reject(new Error(this.error.name + ' ' + this.error.message));
+      };
+    });
   }
 }

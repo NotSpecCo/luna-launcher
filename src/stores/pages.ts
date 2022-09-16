@@ -39,6 +39,9 @@ const defaultPages: Page[] = [
     widgets: [
       { id: generateId(), type: 'search', name: 'Search', data: {} },
       { id: generateId(), type: 'clock', name: 'Clock', data: {} },
+      // { id: generateId(), type: 'networkStats', name: 'Network Stats', data: { days: 1 } },
+      // { id: generateId(), type: 'networkStats', name: 'Network Stats', data: { days: 7 } },
+      // { id: generateId(), type: 'networkStats', name: 'Network Stats', data: { days: 31 } },
       // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '1' } },
       // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '2' } },
       // { id: generateId(), type: 'appIcon', name: 'App Item', data: { appOrigin: '3' } },
