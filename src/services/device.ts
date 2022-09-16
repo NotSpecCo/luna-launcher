@@ -535,6 +535,7 @@ export class Device {
           lastName: 'Downs',
           fullName: 'Garrett Downs',
           phoneNumber: '215-555-1234',
+          cleanPhoneNumber: '2155551234',
         },
         {
           id: '2',
@@ -542,6 +543,7 @@ export class Device {
           lastName: 'Smith',
           fullName: 'Bob Smith',
           phoneNumber: '215-555-1234',
+          cleanPhoneNumber: '2155551234',
         },
       ]);
 
@@ -564,5 +566,16 @@ export class Device {
 
   static getMobileConections(): Connection[] {
     return Navigator.mozMobileConnections.map((a) => toConnection(a));
+  }
+
+  static async call(number: string): Promise<void> {
+    const res = await Navigator.mozTelephony.dial(
+      number,
+      Navigator.mozTelephony.CALL_TYPE_VOICE,
+      false
+    );
+    // console.log('CALL RES', res);
+    // const res2 = await res.result;
+    // console.log('CALL RES2', res2);
   }
 }

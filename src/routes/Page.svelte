@@ -67,6 +67,36 @@
           break;
       }
     },
+    on1: async () => {
+      push('/dialer?number=1');
+    },
+    on2: async () => {
+      push('/dialer?number=2');
+    },
+    on3: async () => {
+      push('/dialer?number=3');
+    },
+    on4: async () => {
+      push('/dialer?number=4');
+    },
+    on5: async () => {
+      push('/dialer?number=5');
+    },
+    on6: async () => {
+      push('/dialer?number=6');
+    },
+    on7: async () => {
+      push('/dialer?number=7');
+    },
+    on8: async () => {
+      push('/dialer?number=8');
+    },
+    on9: async () => {
+      push('/dialer?number=9');
+    },
+    on0: async () => {
+      push('/dialer?number=0');
+    },
   });
 
   onDestroy(() => keys.unsubscribe());

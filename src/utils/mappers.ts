@@ -21,5 +21,6 @@ export function toContact(source: any): Contact {
     lastName,
     fullName,
     phoneNumber: source.tel[0]?.value,
+    cleanPhoneNumber: source.tel[0]?.value?.match(/[0-9]/g).join(''),
   };
 }

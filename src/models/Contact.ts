@@ -4,4 +4,5 @@ export type Contact = {
   lastName?: string;
   fullName: string;
   phoneNumber?: string;
+  cleanPhoneNumber?: string;
 };

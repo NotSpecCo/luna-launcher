@@ -22,14 +22,16 @@
     "networkstats-manage": {},
     "alarms": {},
     "telephony": {},
+    "audio-channel-telephony": {},
     "settings": {
       "access": "readwrite"
     },
     "wifi-manage": {},
     "bluetooth": {},
     "contacts": {
-      "access": "read"
-    }
+      "access": "readwrite"
+    },
+    "phonenumberservice": {}
   },
   "chrome": {
     "statusbar": "overlap"

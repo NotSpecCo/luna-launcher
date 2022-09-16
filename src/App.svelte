@@ -10,6 +10,7 @@
   import AppList from './routes/AppList.svelte';
   import AppSettings from './routes/AppSettings.svelte';
   import DeviceSettings from './routes/DeviceSettings.svelte';
+  import Dialer from './routes/Dialer.svelte';
   import Page from './routes/Page.svelte';
   import Redirect from './routes/Redirect.svelte';
   import Search from './routes/Search.svelte';
@@ -28,6 +29,7 @@
     '/settings': AppSettings,
     '/device': DeviceSettings,
     '/search': Search,
+    '/dialer': Dialer,
     '*': Redirect,
   };
 
@@ -35,12 +37,12 @@
     {
       onBackspace: async (ev) => !ev.detail.targetIsInput && pop(),
     },
-    { priority: 3 }
+    { priority: 0 }
   );
 
   onMount(async () => {
-    await apps.refresh();
-    await contacts.refresh();
+    apps.refresh();
+    contacts.refresh();
   });
 
   onDestroy(() => keys.unsubscribe());
