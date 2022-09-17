@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/garredow/luna-launcher/compare/v1.10.0...v1.10.1) (2022-09-17)
+
+
+### Bug Fixes
+
+* fix settings ([7b349bf](https://github.com/garredow/luna-launcher/commit/7b349bf375f3093f28f756fe50f0b760b8fd73ca))
+
 # [1.10.0](https://github.com/garredow/luna-launcher/compare/v1.9.0...v1.10.0) (2022-09-17)
 
 
