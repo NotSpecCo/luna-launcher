@@ -1,3 +1,6 @@
+import { sub } from 'date-fns';
+import { NetworkType } from '../enums';
+import { Device } from '../services/device';
 import { Storage } from '../services/storage';
 import { apps } from '../stores/apps';
 
@@ -12,6 +15,10 @@ export class App {
 
   get origin(): string {
     return this.raw.origin;
+  }
+
+  get manifestUrl(): string {
+    return this.raw.manifestURL;
   }
 
   get name(): string {
@@ -76,5 +83,30 @@ export class App {
 
   launch() {
     this.raw.launch();
+  }
+
+  networkStats = {
+    [NetworkType.Wifi]: [],
+    [NetworkType.Sim1]: [],
+    [NetworkType.Sim2]: [],
+  };
+
+  async refreshDataStats() {
+    const end = new Date();
+    const start = sub(end, { days: 31 });
+
+    try {
+      const [wifi, sim1, sim2] = await Promise.all([
+        Device.getNetworkStats(NetworkType.Wifi, start, end, this.manifestUrl),
+        Device.getNetworkStats(NetworkType.Sim1, start, end, this.manifestUrl),
+        Device.getNetworkStats(NetworkType.Sim2, start, end, this.manifestUrl),
+      ]);
+
+      this.networkStats[NetworkType.Wifi] = wifi.data.reverse();
+      this.networkStats[NetworkType.Sim1] = sim1.data.reverse();
+      this.networkStats[NetworkType.Sim2] = sim2.data.reverse();
+    } catch (err) {
+      console.error(err);
+    }
   }
 }

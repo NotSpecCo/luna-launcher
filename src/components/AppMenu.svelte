@@ -11,6 +11,7 @@
     { title: 'Apps', route: '/apps' },
     { title: 'Launcher', route: '/settings' },
     { title: 'Device', route: '/device' },
+    { title: 'Network Stats', route: '/networkstats' },
   ];
 </script>
 

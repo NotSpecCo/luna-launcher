@@ -6,8 +6,15 @@ import { Storage } from '../services/storage';
 function createStore() {
   const store = writable<App[]>([]);
 
-  async function refresh() {
+  async function refresh(populateDataStats = false) {
     const apps = await Device.getApps();
+
+    if (populateDataStats) {
+      for (const app of apps) {
+        await app.refreshDataStats();
+      }
+    }
+
     store.set(apps.filter((a) => !a.role));
   }
 

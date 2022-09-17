@@ -11,6 +11,7 @@
   import AppSettings from './routes/AppSettings.svelte';
   import DeviceSettings from './routes/DeviceSettings.svelte';
   import Dialer from './routes/Dialer.svelte';
+  import NetworkStats from './routes/NetworkStats.svelte';
   import Page from './routes/Page.svelte';
   import Redirect from './routes/Redirect.svelte';
   import Search from './routes/Search.svelte';
@@ -30,6 +31,7 @@
     '/device': DeviceSettings,
     '/search': Search,
     '/dialer': Dialer,
+    '/networkstats': NetworkStats,
     '*': Redirect,
   };
 
