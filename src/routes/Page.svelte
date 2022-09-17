@@ -3,6 +3,7 @@
   import Button from 'onyx-ui/components/buttons/Button.svelte';
   import View from 'onyx-ui/components/view/View.svelte';
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
+  import { Onyx } from 'onyx-ui/services';
   import { onDestroy } from 'svelte';
   import { push, replace } from 'svelte-spa-router';
   import AppIconWidget from '../components/AppIconWidget.svelte';
@@ -49,58 +50,65 @@
     }
   }
 
-  const keys = OnyxKeys.subscribe({
-    onArrowLeftLong: async (ev) => {
-      switch (params.pageId) {
-        case 'center':
-          replace('/page/left');
-          break;
-        case 'right':
-          replace('/page/center');
-          break;
-      }
+  const keys = OnyxKeys.subscribe(
+    {
+      onArrowLeftLong: async (ev) => {
+        switch (params.pageId) {
+          case 'center':
+            replace('/page/left');
+            break;
+          case 'right':
+            replace('/page/center');
+            break;
+        }
+      },
+      onArrowRightLong: async (ev) => {
+        switch (params.pageId) {
+          case 'left':
+            replace('/page/center');
+            break;
+          case 'center':
+            replace('/page/right');
+            break;
+        }
+      },
+      on1: async () => {
+        !menusOpen() && push('/dialer?number=1');
+      },
+      on2: async () => {
+        !menusOpen() && push('/dialer?number=2');
+      },
+      on3: async () => {
+        !menusOpen() && push('/dialer?number=3');
+      },
+      on4: async () => {
+        !menusOpen() && push('/dialer?number=4');
+      },
+      on5: async () => {
+        !menusOpen() && push('/dialer?number=5');
+      },
+      on6: async () => {
+        !menusOpen() && push('/dialer?number=6');
+      },
+      on7: async () => {
+        !menusOpen() && push('/dialer?number=7');
+      },
+      on8: async () => {
+        !menusOpen() && push('/dialer?number=8');
+      },
+      on9: async () => {
+        !menusOpen() && push('/dialer?number=9');
+      },
+      on0: async () => {
+        !menusOpen() && push('/dialer?number=0');
+      },
     },
-    onArrowRightLong: async (ev) => {
-      switch (params.pageId) {
-        case 'left':
-          replace('/page/center');
-          break;
-        case 'center':
-          replace('/page/right');
-          break;
-      }
-    },
-    on1: async () => {
-      push('/dialer?number=1');
-    },
-    on2: async () => {
-      push('/dialer?number=2');
-    },
-    on3: async () => {
-      push('/dialer?number=3');
-    },
-    on4: async () => {
-      push('/dialer?number=4');
-    },
-    on5: async () => {
-      push('/dialer?number=5');
-    },
-    on6: async () => {
-      push('/dialer?number=6');
-    },
-    on7: async () => {
-      push('/dialer?number=7');
-    },
-    on8: async () => {
-      push('/dialer?number=8');
-    },
-    on9: async () => {
-      push('/dialer?number=9');
-    },
-    on0: async () => {
-      push('/dialer?number=0');
-    },
-  });
+    { priority: 1 }
+  );
+
+  function menusOpen(): boolean {
+    return Onyx.appMenu.isOpen() || Onyx.contextMenu.isOpen();
+  }
 
   onDestroy(() => keys.unsubscribe());
 </script>
