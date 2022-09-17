@@ -1,3 +1,17 @@
+# [1.10.0](https://github.com/garredow/luna-launcher/compare/v1.9.0...v1.10.0) (2022-09-17)
+
+
+### Bug Fixes
+
+* fix number keys on home screen ([a7a944c](https://github.com/garredow/luna-launcher/commit/a7a944c837749d239b2756b15f4f9f347102d641))
+
+
+### Features
+
+* add dialer view ([f4e5959](https://github.com/garredow/luna-launcher/commit/f4e59595bf1754a8c7f3a43be601bb9670000819))
+* add network stats page ([3137ae5](https://github.com/garredow/luna-launcher/commit/3137ae5ae6576d8b1dc1bd801d20180f73137dad))
+* add network stats widget ([faf29c1](https://github.com/garredow/luna-launcher/commit/faf29c12c4455b08a99e28391d22b06ac5acc054))
+
 # [1.9.0](https://github.com/garredow/luna-launcher/compare/v1.8.0...v1.9.0) (2022-09-15)
 
 
